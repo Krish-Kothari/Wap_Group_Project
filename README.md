@@ -1,16 +1,45 @@
-# React + Vite
+# WAP Group Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a group project built with React and Vite.
 
-Currently, two official plugins are available:
+## Team Members
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Krish Kothari
+2. Maske Shrungar
+3. Vijay Mate
 
-## React Compiler
+## Project Status (As of 14 April 2026)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The following work has been completed so far:
 
-## Expanding the ESLint configuration
+1. React + Vite project setup is complete.
+2. Basic app structure is in place.
+3. Desktop UI component has been created.
+4. Reusable Icon component has been created.
+5. Desktop styling and icon styling have been added using CSS modules.
+6. Development scripts are configured (`dev`, `build`, `lint`, `preview`).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Current Progress Notes
+
+1. Desktop icons are visible and interactive.
+2. Initial desktop-style layout is available.
+3. Window-opening behavior is partially wired and will be completed in upcoming updates.
+
+## Run the Project
+
+```bash
+npm install
+npm run dev
+```
+
+## Next Planned Work
+
+1. Complete window open/close behavior for desktop icons.
+2. Add more desktop/taskbar features.
+3. Improve responsiveness and polish the UI.
+
+
+## Long Term Goal
+
+1. Add youtube clone
+2. Add calculator
