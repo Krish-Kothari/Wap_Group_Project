@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  font-family: 'Segoe UI', 'Roboto', sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}

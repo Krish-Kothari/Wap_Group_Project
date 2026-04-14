@@ -1,0 +1,28 @@
+.icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80px;
+  padding: 8px 4px;
+  border-radius: 8px;
+  transition: background 0.1s;
+  cursor: default;
+}
+
+.icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+}
+
+.iconImage {
+  font-size: 32px;
+  margin-bottom: 4px;
+}
+
+.iconLabel {
+  color: white;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  font-size: 13px;
+  text-align: center;
+  word-break: break-word;
+}

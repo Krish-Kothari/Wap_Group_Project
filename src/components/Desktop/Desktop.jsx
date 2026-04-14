@@ -1,18 +1,25 @@
 import React from 'react';
-import Wallpaper from './Wallpaper';
+import Icon from './Icon/Icon';
 import styles from './Desktop.module.css';
 
-const Desktop = () => {
-  const handleContextMenu = (e) => {
-    e.preventDefault();
-  };
-
+const Desktop = ({ openWindow }) => {
   return (
-    <div className={styles.desktop} onContextMenu={handleContextMenu}>
-      <Wallpaper />
-      <div className={styles.iconsContainer}>
-        {/* Icons to be added once components are created */}
-      </div>
+    <div className={styles.desktop}>
+      <Icon
+        icon="🖥️"
+        label="This PC"
+        onClick={() => openWindow('thispc')}
+      />
+      <Icon
+        icon="🗑️"
+        label="Recycle Bin"
+        onClick={() => {}}
+      />
+      <Icon
+        icon="🌐"
+        label="Microsoft Edge"
+        onClick={() => openWindow('edge')}
+      />
     </div>
   );
 };
