@@ -1,0 +1,17 @@
+.desktop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 48px; /*// taskbar height //*/
+  overflow: hidden;
+}
+
+.iconsContainer {
+  position: relative;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
