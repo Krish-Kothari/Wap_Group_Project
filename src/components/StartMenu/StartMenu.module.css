@@ -1,0 +1,92 @@
+.startMenu {
+  position: absolute;
+  bottom: 60px;
+  left: 16px;
+  width: 500px;
+  background: rgba(32, 32, 32, 0.85);
+  backdrop-filter: blur(30px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  padding: 16px;
+  z-index: 200;
+  color: white;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin-bottom: 20px;
+}
+
+.searchBox span {
+  margin-right: 8px;
+}
+
+.searchBox input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  width: 100%;
+  font-size: 14px;
+}
+
+.searchBox input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.pinnedApps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.appTile {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 12px 8px;
+  text-align: center;
+  font-size: 13px;
+  cursor: default;
+  transition: background 0.1s;
+}
+
+.appTile:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.recommended {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 16px;
+}
+
+.recommended span {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.recommended div {
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: default;
+}
+
+.recommended div:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.userSection {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
