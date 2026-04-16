@@ -1,0 +1,108 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 56px;
+  background-color: #0f0f0f;
+  border-bottom: 1px solid #303030;
+}
+
+.left, .search, .right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.menuBtn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.menuBtn:hover {
+  background-color: #272727;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.logoIcon {
+  font-size: 24px;
+}
+
+.logoText {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.search {
+  flex: 0 1 600px;
+  display: flex;
+}
+
+.search input {
+  flex: 1;
+  padding: 8px 16px;
+  background: #121212;
+  border: 1px solid #303030;
+  border-radius: 20px 0 0 20px;
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+.search input:focus {
+  border-color: #1c62b9;
+}
+
+.search button {
+  padding: 8px 20px;
+  background: #222222;
+  border: 1px solid #303030;
+  border-left: none;
+  border-radius: 0 20px 20px 0;
+  color: white;
+  cursor: pointer;
+}
+
+.search button:hover {
+  background: #3a3a3a;
+}
+
+.right {
+  gap: 8px;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.iconBtn:hover {
+  background-color: #272727;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #3ea6ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  cursor: pointer;
+}

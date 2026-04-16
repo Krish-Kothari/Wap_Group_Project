@@ -3,7 +3,6 @@ import Desktop from './components/Desktop/Desktop';
 import Taskbar from './components/Taskbar/Taskbar';
 import StartMenu from './components/StartMenu/StartMenu';
 import Window from './components/Window/Window';
-// import YouTubeApp from './components/YouTubeApp/YouTubeApp'
 import styles from './App.module.css';
 
 function App() {
