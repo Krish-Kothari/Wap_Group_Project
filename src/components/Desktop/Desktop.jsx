@@ -8,7 +8,7 @@ const Desktop = ({ openWindow }) => {
       <Icon
         icon="🖥️"
         label="This PC"
-        onClick={() => openWindow('thispc')}
+        onClick={() => openWindow('')}
       />
       <Icon
         icon="🗑️"
@@ -18,7 +18,13 @@ const Desktop = ({ openWindow }) => {
       <Icon
         icon="🌐"
         label="Microsoft Edge"
-        onClick={() => openWindow('edge')}
+        onClick={() => openWindow('')}
+      />
+      {/* YouTube*/}
+      <Icon
+        icon="▶️"
+        label="YouTube"
+        onClick={() => openWindow('youtube')}
       />
     </div>
   );
