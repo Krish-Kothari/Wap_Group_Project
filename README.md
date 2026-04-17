@@ -8,28 +8,26 @@ This is a group project built with React and Vite.
 2. Maske Shrungar
 3. Vijay Mate
 
-## Project Status (As of 16 April 2026)
+## Project Status (As of 17 April 2026)
 
 The following work has been completed so far:
 
 1. React + Vite project setup is complete.
 2. Core desktop layout is in place.
-3. Reusable `Desktop`, `Icon`, `Taskbar`, `StartMenu`, and `Window` components have been created.
-4. Desktop icons are interactive and can open simple windows.
-5. The Start menu toggles from the taskbar and closes when clicking outside it.
-6. The taskbar shows the current date and time.
-7. Desktop, taskbar, and window styling have been added using CSS modules.
-8. Development scripts are configured (`dev`, `build`, `lint`, `preview`).
-9. YouTube app component initiated with header UI (logo, search bar, user menu buttons).
+3. Reusable Desktop, Icon, Taskbar, StartMenu, and Window components have been created.
+4. Start menu opens from the taskbar and closes on outside click.
+5. Taskbar shows current date and time.
+6. Desktop, taskbar, start menu, and window styling are implemented using CSS modules.
+7. Development scripts are configured (dev, build, lint, preview).
+8. YouTube module UI parts are created: header, sidebar, video grid, and video card.
 
 ## Current Progress Notes
 
 1. The desktop layout is visible and interactive.
-2. Desktop icons currently open placeholder windows for This PC and Microsoft Edge.
-3. The Start menu includes pinned apps, recommended items, and a search box UI.
-4. The taskbar clock updates from the system date and time.
-5. YouTube app has a functional header component with logo, search bar, and user controls.
-6. YouTube app is partially integrated in App.jsx but requires full component implementation.
+2. Start menu includes pinned apps, recommended items, and a search box UI.
+3. Taskbar clock updates from the system date and time.
+4. YouTube UI subcomponents are prepared but full app integration flow is still in progress.
+5. This PC and Edge views are still placeholder content and need feature implementation.
 
 ## Run the Project
 
@@ -40,7 +38,7 @@ npm run dev
 
 ## Next Planned Work
 
-1. Complete YouTube app implementation (video feed, recommendations, video player).
+1. Complete full YouTube app integration and connect all created YouTube components.
 2. Replace placeholder window content for This PC and Microsoft Edge with functional views.
 3. Add calculator app component.
 4. Improve responsiveness and polish the UI.
@@ -49,5 +47,5 @@ npm run dev
 
 ## Long Term Goal
 
-1. Complete YouTube clone (in progress - header component done).
+1. Complete YouTube clone (currently in progress).
 2. Add a functional calculator app.
