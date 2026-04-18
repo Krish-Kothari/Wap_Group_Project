@@ -1,8 +1,10 @@
+// App.js
 import React, { useState } from 'react';
 import Desktop from './components/Desktop/Desktop';
 import Taskbar from './components/Taskbar/Taskbar';
 import StartMenu from './components/StartMenu/StartMenu';
 import Window from './components/Window/Window';
+import YouTubeApp from './components/YouTubeApp/YouTubeApp';
 import styles from './App.module.css';
 
 function App() {
@@ -14,6 +16,7 @@ function App() {
   const openWindow = (app) => setActiveWindow(app);
   const closeWindow = () => setActiveWindow(null);
 
+  // Content for each window type
   const renderWindowContent = () => {
     switch (activeWindow) {
       case 'thispc':
