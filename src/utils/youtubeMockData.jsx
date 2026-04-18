@@ -58,5 +58,25 @@ export const mockVideos = [
     timestamp: 'Streamed 2 hours ago',
     thumbnail: 'https://picsum.photos/360/200?random=6',
     duration: 'LIVE'
+  },
+  {
+  id: '7',
+    title: 'React State Management with Redux',
+    channelName: 'Academind',
+    channelAvatar: 'https://i.pravatar.cc/40?img=7',
+    views: '600K views',
+    timestamp: '2 weeks ago',
+    thumbnail: 'https://picsum.photos/360/200?random=7',
+    duration: '25:10'
+  },
+  {
+    id: '8',
+    title: 'Windows 11 Tips and Tricks',
+    channelName: 'TechGamer',
+    channelAvatar: 'https://i.pravatar.cc/40?img=8',
+    views: '300K views',
+    timestamp: '3 months ago',
+    thumbnail: 'https://picsum.photos/360/200?random=8',
+    duration: '15:45'
   }
 ];

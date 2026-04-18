@@ -1,0 +1,81 @@
+.playerContainer {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.player {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.videoTitle {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.channelInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.channelAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.channelDetails {
+  flex: 1;
+}
+
+.channelName {
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.subscriberCount {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.subscribeBtn {
+  background-color: #cc0000;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.videoActions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.videoActions button {
+  background: #272727;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.description {
+  background: #272727;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+}
