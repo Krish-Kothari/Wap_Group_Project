@@ -1,0 +1,307 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Space+Mono:wght@400;700&display=swap");
+
+* {
+	box-sizing: border-box;
+}
+
+.gameShell {
+	--paper: #fff8ea;
+	--ink: #1f2a37;
+	--accent: #ff6a3d;
+	--accent-2: #0a7d7d;
+	--sun: #f9b233;
+	--line: #1f2a371f;
+	--card: #fffdf7cc;
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	padding: 2rem 1rem 2.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+	color: var(--ink);
+	background:
+		radial-gradient(circle at 12% 18%, #ffe29e 0%, #ffe29e00 36%),
+		radial-gradient(circle at 86% 6%, #ffd2b4 0%, #ffd2b400 34%),
+		linear-gradient(130deg, #fff7de 0%, #ffe5ca 55%, #ffd8b2 100%);
+}
+
+.gameCard {
+	width: min(960px, 100%);
+	perspective: 1200px;
+}
+
+.gameCard {
+	width: min(960px, 100%);
+	position: relative;
+	overflow: hidden;
+	border: 2px solid #1f2a3729;
+	border-radius: 26px;
+	background: var(--card);
+	box-shadow:
+		0 20px 48px #7a52371f,
+		0 3px 0 #ffffffcc inset,
+		0 -3px 0 #ffe6bdcc inset;
+	padding: 1.6rem;
+	backdrop-filter: blur(4px);
+	animation: card-in 680ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.gameCard::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background:
+		repeating-linear-gradient(
+			-16deg,
+			#1f2a3705 0,
+			#1f2a3705 2px,
+			transparent 2px,
+			transparent 24px
+		);
+}
+
+.gameHeader {
+	text-align: center;
+	margin-bottom: 1.2rem;
+}
+
+.eyebrow {
+	margin: 0;
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+	font-size: 0.72rem;
+	color: #334155;
+}
+
+.title {
+	margin: 0.35rem 0 0.45rem;
+	font-size: clamp(1.8rem, 2.4vw, 2.6rem);
+	line-height: 1.05;
+}
+
+.winnerBanner {
+	margin: 0 auto;
+	width: fit-content;
+	padding: 0.4rem 0.8rem;
+	border-radius: 999px;
+	background: #fff7;
+	border: 1px dashed #1f2a3740;
+	font-size: 0.95rem;
+}
+
+.scoreboard {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0.85rem;
+	margin-top: 1.2rem;
+}
+
+.scoreBox {
+	border: 1px solid var(--line);
+	border-radius: 16px;
+	padding: 0.75rem;
+	background: #fffdf9b8;
+}
+
+.scoreBox h2 {
+	margin: 0;
+	font-size: 0.88rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: #46586b;
+}
+
+.scoreBox p {
+	margin: 0.5rem 0 0;
+	font-size: 1.18rem;
+	font-weight: 800;
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+}
+
+.movesRow {
+	margin-top: 1rem;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.85rem;
+}
+
+.moveTile {
+	border-radius: 18px;
+	border: 1px solid var(--line);
+	background: #fff;
+	padding: 0.8rem;
+	text-align: center;
+}
+
+.moveTile h3 {
+	margin: 0 0 0.5rem;
+	font-size: 0.9rem;
+	text-transform: uppercase;
+	letter-spacing: 0.07em;
+	color: #506173;
+}
+
+.moveEmoji {
+	font-size: clamp(2rem, 4vw, 2.8rem);
+	line-height: 1;
+}
+
+.controls {
+	margin-top: 1rem;
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 0.7rem;
+	align-items: stretch;
+}
+
+.moveBtn,
+.resetBtn {
+	border: none;
+	cursor: pointer;
+	transition: transform 200ms ease, filter 200ms ease;
+}
+
+.moveBtn {
+	border-radius: 14px;
+	font-size: 1.85rem;
+	padding: 0.6rem 0;
+	background: linear-gradient(180deg, #fff 0%, #fff3db 100%);
+	border: 1px solid #1f2a3726;
+	box-shadow: 0 4px 0 #e8d1ad;
+}
+
+.moveBtn:nth-child(1) {
+	transform: rotate(-2deg);
+}
+
+.moveBtn:nth-child(2) {
+	transform: rotate(1deg);
+}
+
+.moveBtn:nth-child(3) {
+	transform: rotate(-1deg);
+}
+
+.resetBtn {
+	font-family: "Space Mono", monospace;
+	font-size: 0.82rem;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: #fff;
+	border-radius: 12px;
+	background: linear-gradient(140deg, var(--accent), #f95858);
+	box-shadow: 0 4px 0 #c74a30;
+}
+
+.moveBtn:hover,
+.resetBtn:hover {
+	transform: translateY(-2px);
+	filter: saturate(1.12);
+}
+
+.moveBtn:active,
+.resetBtn:active {
+	transform: translateY(2px);
+}
+
+.historyWrap {
+	margin-top: 1.2rem;
+	border-top: 1px dashed #1f2a3733;
+	padding-top: 0.95rem;
+}
+
+.historyWrap h2 {
+	margin: 0;
+	font-size: 1.08rem;
+}
+
+.historyEmpty {
+	margin: 0.65rem 0 0;
+	color: #5f6f81;
+}
+
+.historyList {
+	margin: 0.8rem 0 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	gap: 0.55rem;
+}
+
+.historyItem {
+	display: grid;
+	grid-template-columns: 1.2fr 1fr 1fr 1fr;
+	gap: 0.5rem;
+	align-items: center;
+	padding: 0.55rem 0.65rem;
+	border-radius: 12px;
+	border: 1px solid var(--line);
+	background: #fffdf5;
+	font-size: 0.9rem;
+}
+
+.roundPill {
+	display: inline-flex;
+	width: fit-content;
+	border-radius: 999px;
+	background: #f5f9ff;
+	border: 1px solid #bcc9d9;
+	padding: 0.12rem 0.5rem;
+	font-family: "Space Mono", monospace;
+	font-size: 0.74rem;
+}
+
+.result {
+	font-weight: 700;
+}
+
+.player {
+	color: var(--accent-2);
+}
+
+.computer {
+	color: #c24a3f;
+}
+
+.tie {
+	color: #8b6649;
+}
+
+@keyframes card-in {
+	from {
+		opacity: 0;
+		transform: translateY(14px) rotateX(4deg);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0) rotateX(0);
+	}
+}
+
+@media (max-width: 760px) {
+	.scoreboard {
+		grid-template-columns: 1fr;
+	}
+
+	.controls {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+
+	.resetBtn {
+		grid-column: 1 / -1;
+		padding: 0.75rem 0;
+	}
+
+	.historyItem {
+		grid-template-columns: 1fr 1fr;
+		row-gap: 0.35rem;
+	}
+}

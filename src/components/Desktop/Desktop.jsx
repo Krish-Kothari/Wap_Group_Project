@@ -26,6 +26,11 @@ const Desktop = ({ openWindow }) => {
         label="YouTube"
         onClick={() => openWindow('youtube')}
       />
+      <Icon
+        icon="🎮"
+        label="Stone Paper Scissor"
+        onClick={() => openWindow('sps')}
+      />
     </div>
   );
 };

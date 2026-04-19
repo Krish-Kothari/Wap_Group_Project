@@ -4,6 +4,7 @@ import Taskbar from './components/Taskbar/Taskbar';
 import StartMenu from './components/StartMenu/StartMenu';
 import Window from './components/Window/Window';
 import YouTubeApp from './components/YouTubeApp/YouTubeApp';
+import StonePaperScissor from './components/StonePaperScissor/StonePaperScissor';
 import styles from './App.module.css';
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
         return <p>Microsoft Edge content</p>;
       case 'youtube':
         return <YouTubeApp />;
+      case 'sps':
+        return <StonePaperScissor />;
       default:
         return null;
     }
@@ -36,8 +39,9 @@ function App() {
         <Window 
           title={activeWindow === 'thispc' ? 'This PC' : 
                  activeWindow === 'edge' ? 'Microsoft Edge' : 
-                 'YouTube'} 
-          fullscreen={activeWindow === 'youtube'}
+               activeWindow === 'youtube' ? 'YouTube' :
+               'Stone Paper Scissor'} 
+          fullscreen={activeWindow === 'youtube' || activeWindow === 'sps'}
           onClose={closeWindow}
         >
           {renderWindowContent()}
