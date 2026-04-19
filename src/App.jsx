@@ -5,6 +5,7 @@ import StartMenu from './components/StartMenu/StartMenu';
 import Window from './components/Window/Window';
 import YouTubeApp from './components/YouTubeApp/YouTubeApp';
 import StonePaperScissor from './components/StonePaperScissor/StonePaperScissor';
+import Calculator from './components/Calculator/Calculator';
 import styles from './App.module.css';
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
         return <YouTubeApp />;
       case 'sps':
         return <StonePaperScissor />;
+      case 'calculator':           
+        return <Calculator />;
       default:
         return null;
     }
@@ -40,8 +43,9 @@ function App() {
           title={activeWindow === 'thispc' ? 'This PC' : 
                  activeWindow === 'edge' ? 'Microsoft Edge' : 
                activeWindow === 'youtube' ? 'YouTube' :
-               'Stone Paper Scissor'} 
-          fullscreen={activeWindow === 'youtube' || activeWindow === 'sps'}
+               activeWindow === 'sps' ? 'Stone Paper Scissor' :
+               activeWindow === 'calculator' ? 'Calculator' : ''} 
+          fullscreen={activeWindow === 'youtube' || activeWindow === 'sps' || activeWindow === 'calculator'}
           onClose={closeWindow}
         >
           {renderWindowContent()}

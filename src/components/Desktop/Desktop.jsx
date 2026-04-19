@@ -31,6 +31,11 @@ const Desktop = ({ openWindow }) => {
         label="Stone Paper Scissor"
         onClick={() => openWindow('sps')}
       />
+      <Icon
+        icon="🧮"
+        label="Calculator"
+        onClick={() => openWindow('calculator')}
+      />
     </div>
   );
 };
