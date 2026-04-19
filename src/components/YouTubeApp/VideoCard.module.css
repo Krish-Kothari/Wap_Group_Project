@@ -63,3 +63,21 @@
   color: #aaa;
   margin-bottom: 2px;
 }
+.compact {
+  display: flex;
+  gap: 8px;
+}
+
+.compact .thumbnail {
+  width: 168px;
+  flex-shrink: 0;
+}
+
+.compact .info {
+  flex: 1;
+}
+
+.compact .title {
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
