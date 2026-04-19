@@ -16,6 +16,16 @@
   color: white;
 }
 
+.fullscreen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  transform: none;
+  border-radius: 0;
+  z-index: 300;
+}
+
 .titleBar {
   display: flex;
   align-items: center;
@@ -56,4 +66,8 @@
   flex: 1;
   padding: 16px;
   overflow: auto;
+}
+
+.fullscreenContent {
+  padding: 0;
 }

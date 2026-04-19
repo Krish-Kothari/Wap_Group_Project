@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from 'react';
 import Desktop from './components/Desktop/Desktop';
 import Taskbar from './components/Taskbar/Taskbar';
@@ -16,7 +15,6 @@ function App() {
   const openWindow = (app) => setActiveWindow(app);
   const closeWindow = () => setActiveWindow(null);
 
-  // Content for each window type
   const renderWindowContent = () => {
     switch (activeWindow) {
       case 'thispc':
@@ -39,6 +37,7 @@ function App() {
           title={activeWindow === 'thispc' ? 'This PC' : 
                  activeWindow === 'edge' ? 'Microsoft Edge' : 
                  'YouTube'} 
+          fullscreen={activeWindow === 'youtube'}
           onClose={closeWindow}
         >
           {renderWindowContent()}

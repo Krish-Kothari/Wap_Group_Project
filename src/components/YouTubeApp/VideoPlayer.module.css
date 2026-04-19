@@ -1,5 +1,6 @@
 .playerContainer {
   flex: 1;
+  min-width: 0;
   padding: 20px;
   overflow-y: auto;
 }
