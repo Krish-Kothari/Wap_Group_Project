@@ -1,5 +1,21 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './StartMenu.module.css';
+import searchIcon from '../../assets/search.png';
+import explorerIcon from '../../assets/explorer.png';
+import edgeIcon from '../../assets/edge.png';
+import settingsIcon from '../../assets/settings.png';
+import ytIcon from '../../assets/ytIcon.png';
+
+const pinnedApps = [
+  { label: 'File Explorer', image: explorerIcon },
+  { label: 'Edge', image: edgeIcon },
+  { label: 'Settings', image: settingsIcon },
+  { label: 'YouTube', image: ytIcon },
+  { label: '🎮 Games' },
+  { label: '🧮 Calculator' },
+];
+
+const recommendedItems = ['📄 Document.docx', '🖼️ Picture.png', '📁 Project folder'];
 
 const StartMenu = ({ closeStart }) => {
   const menuRef = useRef();
@@ -16,25 +32,44 @@ const StartMenu = ({ closeStart }) => {
 
   return (
     <div className={styles.startMenu} ref={menuRef}>
+      <div className={styles.headerRow}>
+        <div className={styles.profileChip}>
+          <span>👤</span>
+          <div>
+            <strong>User</strong>
+            <span>Local account</span>
+          </div>
+        </div>
+        <button className={styles.powerButton} type="button">⏻</button>
+      </div>
+
       <div className={styles.searchBox}>
-        <span>🔍</span>
+        <img src={searchIcon} alt="Search" className={styles.searchIcon} />
         <input type="text" placeholder="Type here to search" />
       </div>
       
+      <div className={styles.sectionHeader}>
+        <span>Pinned</span>
+        <button type="button">All apps</button>
+      </div>
+
       <div className={styles.pinnedApps}>
-        <div className={styles.appTile}>📁 File Explorer</div>
-        <div className={styles.appTile}>🌐 Edge</div>
-        <div className={styles.appTile}>⚙️ Settings</div>
+        {pinnedApps.map((app) => (
+          <div key={app.label} className={styles.appTile}>
+            {app.image ? <img src={app.image} alt={app.label} className={styles.appTileIcon} /> : null}
+            <span>{app.label}</span>
+          </div>
+        ))}
       </div>
       
       <div className={styles.recommended}>
-        <span>Recommended</span>
-        <div>📄 Document.docx</div>
-        <div>🖼️ Picture.png</div>
-      </div>
-      
-      <div className={styles.userSection}>
-        <span>👤 User</span>
+        <div className={styles.sectionHeader}>
+          <span>Recommended</span>
+          <button type="button">More</button>
+        </div>
+        {recommendedItems.map((item) => (
+          <div key={item}>{item}</div>
+        ))}
       </div>
     </div>
   );

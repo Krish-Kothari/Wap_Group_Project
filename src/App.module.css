@@ -2,6 +2,6 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: url('https://win11.blueedge.me/img/wallpapers/img0.jpg') center/cover no-repeat;
+  background: radial-gradient(circle at top, rgba(255,255,255,0.18), transparent 42%), url('https://win11.blueedge.me/img/wallpapers/img0.jpg') center/cover no-repeat;
   overflow: hidden;
 }

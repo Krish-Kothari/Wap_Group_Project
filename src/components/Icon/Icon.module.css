@@ -2,27 +2,33 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80px;
-  padding: 8px 4px;
-  border-radius: 8px;
-  transition: background 0.1s;
+  width: 88px;
+  padding: 10px 6px;
+  border-radius: 12px;
+  transition: background 0.15s ease, transform 0.15s ease;
   cursor: default;
 }
 
 .icon:hover {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  transform: translateY(-1px);
 }
 
 .iconImage {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
   font-size: 32px;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .iconLabel {
   color: white;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  font-size: 13px;
+  font-size: 12px;
+  line-height: 1.2;
   text-align: center;
   word-break: break-word;
 }

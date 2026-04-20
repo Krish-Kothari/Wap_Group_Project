@@ -25,6 +25,13 @@
   text-align: center;
 }
 
+.iconImage {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  filter: invert(1);
+}
+
 .label {
   font-size: 14px;
 }

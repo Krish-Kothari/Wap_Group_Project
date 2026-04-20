@@ -34,8 +34,9 @@
   gap: 4px;
 }
 
-.logoIcon {
-  font-size: 24px;
+.logoIcon img {
+  width: 24px;
+  height: 24px;
 }
 
 .logoText {
@@ -73,6 +74,13 @@
   cursor: pointer;
 }
 
+.searchIcon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  filter: invert(1);
+}
+
 .search button:hover {
   background: #3a3a3a;
 }
@@ -105,4 +113,8 @@
   justify-content: center;
   font-weight: 500;
   cursor: pointer;
+}
+.avatar:hover {
+  background-color: #3ea6ff;
+  opacity: 0.8;
 }

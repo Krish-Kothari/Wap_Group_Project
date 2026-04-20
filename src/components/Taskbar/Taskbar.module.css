@@ -3,15 +3,25 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 48px;
-  background: rgba(32, 32, 32, 0.8);
-  backdrop-filter: blur(20px);
+  height: 60px;
+  background: rgba(243, 243, 243, 0.72);
+  backdrop-filter: blur(30px) saturate(180%);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.04), 0 -10px 30px rgba(0, 0, 0, 0.15);
   z-index: 100;
+}
+
+.taskbarCenter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .startButton {
@@ -20,26 +30,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  transition: background 0.1s;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.38);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
   cursor: default;
+  color: #1f1f1f;
 }
 
 .startButton:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.55);
+  transform: translateY(-1px);
 }
 
 .winIcon {
   font-size: 20px;
-  color: white;
+  color: #0078d4;
 }
 
 .taskbarIcons {
   display: flex;
   gap: 8px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .taskIcon {
@@ -48,23 +60,33 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
+  border-radius: 10px;
   font-size: 18px;
-  color: white;
+  color: #1d1d1f;
   background: transparent;
-  transition: background 0.1s;
+  transition: background 0.15s ease, transform 0.15s ease;
   cursor: default;
 }
 
+.taskIconImage {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
 .taskIcon:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.6);
+  transform: translateY(-1px);
 }
 
 .systemTray {
-  color: white;
+  color: #171717;
   font-size: 13px;
   display: flex;
   align-items: center;
-  padding: 0 8px;
+  padding: 0 10px;
   height: 100%;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }

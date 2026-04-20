@@ -1,9 +1,10 @@
 import React from 'react';
 import styles from './YouTubeSidebar.module.css';
+import homeIcon from '../../assets/home.png';
 
 const YouTubeSidebar = () => {
   const menuItems = [
-    { icon: '🏠', label: 'Home' },
+    { icon: <img src={homeIcon} alt="Home" className={styles.iconImage} />, label: 'Home' },
     { icon: '📺', label: 'Shorts' },
     { icon: '📋', label: 'Subscriptions' },
     { icon: '📚', label: 'Library' },
