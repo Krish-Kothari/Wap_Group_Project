@@ -1,0 +1,52 @@
+.notepad {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #f5f2e8;
+  font-family: 'Courier New', monospace;
+}
+
+.toolbar {
+  background: #e0d7c6;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #c0b5a0;
+  font-weight: bold;
+}
+
+.clearBtn {
+  background: #d9534f;
+  border: none;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.clearBtn:hover {
+  background: #c9302c;
+}
+
+.textarea {
+  flex: 1;
+  padding: 16px;
+  font-size: 14px;
+  font-family: 'Courier New', monospace;
+  border: none;
+  resize: none;
+  outline: none;
+  background: #fffaf0;
+  line-height: 1.5;
+}
+
+.status {
+  background: #e0d7c6;
+  padding: 6px 12px;
+  font-size: 12px;
+  display: flex;
+  gap: 20px;
+  border-top: 1px solid #c0b5a0;
+}
