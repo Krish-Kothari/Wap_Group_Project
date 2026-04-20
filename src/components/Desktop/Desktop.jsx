@@ -36,6 +36,11 @@ const Desktop = ({ openWindow }) => {
         label="Calculator"
         onClick={() => openWindow('calculator')}
       />
+      <Icon
+        icon="🐙"
+        label="GitHub Repo"
+        href="https://github.com/Krish-Kothari/Wap_Group_Project"
+      />
     </div>
   );
 };
