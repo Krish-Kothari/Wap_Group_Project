@@ -23,7 +23,7 @@ const Desktop = ({ openWindow }) => {
         <Icon
           icon={<img src={thisPC} alt="This PC" style={{width: '30px',height:'30px'}} />}
           label="This PC"
-          onClick={() => openWindow('')}
+          onClick={() => openWindow('thispc')}
         />
         <Icon
           icon={<img src={recycleBin} alt="Recycle Bin" style={{width: '30px',height:'30px'}} />}
@@ -32,7 +32,7 @@ const Desktop = ({ openWindow }) => {
         <Icon
           icon={<img src={edge} alt="Microsoft Edge" style={{width: '30px',height:'30px'}} />}
           label="Microsoft Edge"
-          onClick={() => window.open("_blank")}
+          onClick={() => openWindow('edge')}
         />
         {/* YouTube*/}
         <Icon
