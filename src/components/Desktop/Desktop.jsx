@@ -7,6 +7,8 @@ import background from '../../assets/background.png';
 import recycleBin from '../../assets/recycleBin.png';
 import edge from '../../assets/edge.png';
 import github from '../../assets/github.png';
+import rpsIcon from '../../assets/rpsIcon.png';
+import calculatorIcon from '../../assets/calculatorIcon.png';
 // import edgeIcon from '../../assets/edgeIcon.png';
 // import spsIcon from '../../assets/spsIcon.png';
 // import calculatorIcon from '../../assets/calculatorIcon.png';
@@ -38,12 +40,12 @@ const Desktop = ({ openWindow }) => {
         onClick={() => openWindow('youtube')}
       />
       <Icon
-        icon="🎮"
+        icon={<img src={rpsIcon} alt="Stone Paper Scissor" style={{ width: '30px', height: '30px' }} />}
         label="Stone Paper Scissor"
         onClick={() => openWindow('sps')}
       />
       <Icon
-        icon="🧮"
+        icon={<img src={calculatorIcon} alt="Calculator" style={{ width: '30px', height: '30px' }} />}
         label="Calculator"
         onClick={() => openWindow('calculator')}
       />
