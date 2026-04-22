@@ -6,6 +6,7 @@ import Window from './components/Window/Window';
 import YouTubeApp from './components/YouTubeApp/YouTubeApp';
 import StonePaperScissor from './components/StonePaperScissor/StonePaperScissor';
 import Calculator from './components/Calculator/Calculator';
+import Calendar from './components/Calendar/Calendar';
 import styles from './App.module.css';
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
         return <StonePaperScissor />;
       case 'calculator':           
         return <Calculator />;
+      case 'calendar':
+        return <Calendar />;
       default:
         return null;
     }
@@ -44,7 +47,8 @@ function App() {
                  activeWindow === 'edge' ? 'Microsoft Edge' : 
                activeWindow === 'youtube' ? 'YouTube' :
                activeWindow === 'sps' ? 'Stone Paper Scissor' :
-               activeWindow === 'calculator' ? 'Calculator' : ''} 
+               activeWindow === 'calculator' ? 'Calculator' :
+               activeWindow === 'calendar' ? 'Calendar' : ''} 
           fullscreen={activeWindow === 'youtube' || activeWindow === 'sps' || activeWindow === 'calculator'}
           onClose={closeWindow}
         >
