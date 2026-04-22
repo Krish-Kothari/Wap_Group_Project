@@ -23,7 +23,7 @@ const Desktop = ({ openWindow }) => {
         <Icon
           icon={<img src={thisPC} alt="This PC" style={{width: '30px',height:'30px'}} />}
           label="This PC"
-          onClick={() => openWindow('thispc')}
+          onClick={() => window.open('_blank')}
         />
         <Icon
           icon={<img src={recycleBin} alt="Recycle Bin" style={{width: '30px',height:'30px'}} />}
@@ -32,7 +32,7 @@ const Desktop = ({ openWindow }) => {
         <Icon
           icon={<img src={edge} alt="Microsoft Edge" style={{width: '30px',height:'30px'}} />}
           label="Microsoft Edge"
-          onClick={() => openWindow('edge')}
+          onClick={() => openWindow('')}
         />
         {/* YouTube*/}
         <Icon
@@ -50,11 +50,6 @@ const Desktop = ({ openWindow }) => {
           label="Calculator"
           onClick={() => openWindow('calculator')}
         />
-        <Icon
-          icon={<img src={github} alt="GitHub" style={{ width: '24px', height: '24px' }} />}
-          label="GitHub Repo"
-          onClick={() => window.open("https://github.com/Krish-Kothari/Wap_Group_Project", "_blank")}
-        />
       </div>
 
       <div className={styles.iconColumn}>
@@ -62,6 +57,11 @@ const Desktop = ({ openWindow }) => {
           icon="📅"
           label="Calendar"
           onClick={() => openWindow('calendar')}
+        />
+        <Icon
+          icon={<img src={github} alt="GitHub" style={{ Width: '24px', height: '24px' }} />}
+          label="GitHub Repo"
+          onClick={() => window.open("https://github.com/Krish-Kothari/Wap_Group_Project", "_blank")}
         />
       </div>
     </div>
