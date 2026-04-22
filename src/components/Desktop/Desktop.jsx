@@ -19,46 +19,51 @@ const Desktop = ({ openWindow }) => {
       className={styles.desktop}
       style={{ backgroundImage: `url(${background})` }}
     >
-      <Icon
-        icon={<img src={thisPC} alt="This PC" style={{width: '30px',height:'30px'}} />}
-        label="This PC"
-        onClick={() => openWindow('')}
-      />
-      <Icon
-        icon={<img src={recycleBin} alt="Recycle Bin" style={{width: '30px',height:'30px'}} />}
-        label="Recycle Bin"
-      />
-      <Icon
-        icon={<img src={edge} alt="Microsoft Edge" style={{width: '30px',height:'30px'}} />}
-        label="Microsoft Edge"
-        onClick={() => window.open("_blank")}
-      />
-      {/* YouTube*/}
-      <Icon
-        icon={<img src={ytIcon} alt="YouTube" style={{ width: '24px', height: '24px' }} />}
-        label="YouTube"
-        onClick={() => openWindow('youtube')}
-      />
-      <Icon
-        icon={<img src={rpsIcon} alt="Stone Paper Scissor" style={{ width: '30px', height: '30px' }} />}
-        label="Stone Paper Scissor"
-        onClick={() => openWindow('sps')}
-      />
-      <Icon
-        icon={<img src={calculatorIcon} alt="Calculator" style={{ width: '30px', height: '30px' }} />}
-        label="Calculator"
-        onClick={() => openWindow('calculator')}
-      />
-      <Icon
-        icon="📅"
-        label="Calendar"
-        onClick={() => openWindow('calendar')}
-      />
-      <Icon
-        icon={<img src={github} alt="GitHub" style={{ width: '24px', height: '24px' }} />}
-        label="GitHub Repo"
-        onClick={() => window.open("https://github.com/Krish-Kothari/Wap_Group_Project", "_blank")}
-      />
+      <div className={styles.iconColumn}>
+        <Icon
+          icon={<img src={thisPC} alt="This PC" style={{width: '30px',height:'30px'}} />}
+          label="This PC"
+          onClick={() => openWindow('')}
+        />
+        <Icon
+          icon={<img src={recycleBin} alt="Recycle Bin" style={{width: '30px',height:'30px'}} />}
+          label="Recycle Bin"
+        />
+        <Icon
+          icon={<img src={edge} alt="Microsoft Edge" style={{width: '30px',height:'30px'}} />}
+          label="Microsoft Edge"
+          onClick={() => window.open("_blank")}
+        />
+        {/* YouTube*/}
+        <Icon
+          icon={<img src={ytIcon} alt="YouTube" style={{ width: '24px', height: '24px' }} />}
+          label="YouTube"
+          onClick={() => openWindow('youtube')}
+        />
+        <Icon
+          icon={<img src={rpsIcon} alt="Stone Paper Scissor" style={{ width: '30px', height: '30px' }} />}
+          label="Stone Paper Scissor"
+          onClick={() => openWindow('sps')}
+        />
+        <Icon
+          icon={<img src={calculatorIcon} alt="Calculator" style={{ width: '30px', height: '30px' }} />}
+          label="Calculator"
+          onClick={() => openWindow('calculator')}
+        />
+        <Icon
+          icon={<img src={github} alt="GitHub" style={{ width: '24px', height: '24px' }} />}
+          label="GitHub Repo"
+          onClick={() => window.open("https://github.com/Krish-Kothari/Wap_Group_Project", "_blank")}
+        />
+      </div>
+
+      <div className={styles.iconColumn}>
+        <Icon
+          icon="📅"
+          label="Calendar"
+          onClick={() => openWindow('calendar')}
+        />
+      </div>
     </div>
   );
 };
