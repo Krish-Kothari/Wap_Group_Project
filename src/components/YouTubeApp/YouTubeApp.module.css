@@ -22,6 +22,27 @@
   overflow-y: auto;
   padding: 20px;
 }
+
+.emptyState {
+  min-height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #d0d0d0;
+  gap: 8px;
+}
+
+.emptyState h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.emptyState p {
+  margin: 0;
+  color: #9f9f9f;
+}
 .watchContainer {
   display: flex;
   flex: 1;

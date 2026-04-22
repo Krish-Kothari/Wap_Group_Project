@@ -3,24 +3,33 @@ import styles from './YouTubeHeader.module.css';
 import ytIcon from '../../assets/ytIcon.png';
 import searchIcon from '../../assets/search.png';
 
-const YouTubeHeader = () => {
+const YouTubeHeader = ({ onLogoClick, searchQuery, onSearchChange }) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.left}>
         <button className={styles.menuBtn}>☰</button>
-        <div className={styles.logo}>
+        <button className={styles.logo} onClick={onLogoClick}>
           <span className={styles.logoIcon}>
             <img src={ytIcon} alt="YouTube" />
           </span>
           <span className={styles.logoText}>YouTube</span>
-        </div>
+        </button>
       </div>
-      <div className={styles.search}>
-        <input type="text" placeholder="Search" />
+      <form className={styles.search} onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Search"
+          value={searchQuery}
+          onChange={(e) => onSearchChange(e.target.value)}
+        />
         <button>
           <img src={searchIcon} alt="Search" className={styles.searchIcon} />
         </button>
-      </div>
+      </form>
       <div className={styles.right}>
         <button className={styles.iconBtn}>🎥</button>
         <button className={styles.iconBtn}>🔔</button>

@@ -1,13 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styles from './Notepad.module.css';
 
 const Notepad = () => {
-  const [text, setText] = useState('');
-
-  useEffect(() => {
-    const saved = localStorage.getItem('notepadText');
-    if (saved) setText(saved);
-  }, []);
+  const [text, setText] = useState(() => localStorage.getItem('notepadText') || '');
 
   // Auto-save on every change
   const handleChange = (e) => {

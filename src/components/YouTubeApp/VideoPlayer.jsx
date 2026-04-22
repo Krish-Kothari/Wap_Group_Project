@@ -1,18 +1,63 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './VideoPlayer.module.css';
 
 const VideoPlayer = ({ video }) => {
-  const videoUrl = `https://www.youtube.com/embed/${video.id}?autoplay=1`;
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+  const [reloadCount, setReloadCount] = useState(0);
+
+  useEffect(() => {
+    if (!video) return undefined;
+
+    const timeout = setTimeout(() => {
+      setHasError(true);
+      setIsLoading(false);
+    }, 12000);
+
+    return () => clearTimeout(timeout);
+  }, [video, reloadCount]);
+
+  if (!video) {
+    return null;
+  }
+
+  const videoUrl = `https://www.youtube.com/embed/${video.id}?autoplay=1&rel=0`;
+
+  const handleRetry = () => {
+    setIsLoading(true);
+    setHasError(false);
+    setReloadCount((prev) => prev + 1);
+  };
+
   return (
     <div className={styles.playerContainer}>
-      <iframe
-        className={styles.player}
-        src={videoUrl}
-        title={video.title}
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
+      <div className={styles.playerFrameContainer}>
+        {isLoading && !hasError && (
+          <div className={styles.loadingState}>Loading video...</div>
+        )}
+
+        {hasError ? (
+          <div className={styles.errorState}>
+            <p>Video failed to load. Please try again.</p>
+            <div className={styles.errorActions}>
+              <button onClick={handleRetry} className={styles.retryBtn}>Retry</button>
+              <a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noreferrer">
+                Open on YouTube
+              </a>
+            </div>
+          </div>
+        ) : (
+          <iframe
+            className={styles.player}
+            src={`${videoUrl}&r=${reloadCount}`}
+            title={video.title}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            onLoad={() => setIsLoading(false)}
+          ></iframe>
+        )}
+      </div>
       <div className={styles.videoInfo}>
         <h2 className={styles.videoTitle}>{video.title}</h2>
         <div className={styles.channelInfo}>

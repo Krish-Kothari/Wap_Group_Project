@@ -7,10 +7,13 @@ const RecommendedVideos = ({ videos, onVideoClick }) => {
     <div className={styles.recommended}>
       <h3 className={styles.heading}>Recommended</h3>
       <div className={styles.list}>
-        {videos.map(video => (
-          <div key={video.id} onClick={() => onVideoClick(video)}>
-            <VideoCard video={video} compact />
-          </div>
+        {videos.map((video) => (
+          <VideoCard
+            key={video.id}
+            video={video}
+            compact
+            onClick={onVideoClick}
+          />
         ))}
       </div>
     </div>

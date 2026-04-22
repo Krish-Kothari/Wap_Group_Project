@@ -1,6 +1,6 @@
 export const mockVideos = [
   {
-    id: '1',
+    id: 'dQw4w9WgXcQ',
     title: 'Building a YouTube Clone with React',
     channelName: 'CodeWithMe',
     channelAvatar: 'https://i.pravatar.cc/40?img=1',
@@ -10,7 +10,7 @@ export const mockVideos = [
     duration: '12:34'
   },
   {
-    id: '2',
+    id: '9bZkp7q19f0',
     title: 'Windows 11 Official Trailer',
     channelName: 'Microsoft',
     channelAvatar: 'https://i.pravatar.cc/40?img=2',
@@ -20,7 +20,7 @@ export const mockVideos = [
     duration: '2:15'
   },
   {
-    id: '3',
+    id: 'Ke90Tje7VS0',
     title: 'Learn React in 30 Minutes',
     channelName: 'Programming with Mosh',
     channelAvatar: 'https://i.pravatar.cc/40?img=3',
@@ -30,7 +30,7 @@ export const mockVideos = [
     duration: '31:42'
   },
   {
-    id: '4',
+    id: 'u21W_tfPVrY',
     title: 'Top 10 VS Code Extensions',
     channelName: 'Fireship',
     channelAvatar: 'https://i.pravatar.cc/40?img=4',
@@ -40,7 +40,7 @@ export const mockVideos = [
     duration: '8:20'
   },
   {
-    id: '5',
+    id: 'aircAruvnKk',
     title: 'The Future of AI',
     channelName: 'TechLead',
     channelAvatar: 'https://i.pravatar.cc/40?img=5',
@@ -50,7 +50,7 @@ export const mockVideos = [
     duration: '18:55'
   },
   {
-    id: '6',
+    id: 'jfKfPfyJRdk',
     title: 'Chill Lofi Beats to Study To',
     channelName: 'Lofi Girl',
     channelAvatar: 'https://i.pravatar.cc/40?img=6',
@@ -60,7 +60,7 @@ export const mockVideos = [
     duration: 'LIVE'
   },
   {
-  id: '7',
+    id: 'x0fSBAgBrOQ',
     title: 'React State Management with Redux',
     channelName: 'Academind',
     channelAvatar: 'https://i.pravatar.cc/40?img=7',
@@ -70,7 +70,7 @@ export const mockVideos = [
     duration: '25:10'
   },
   {
-    id: '8',
+    id: 'hQAHSlTtcmY',
     title: 'Windows 11 Tips and Tricks',
     channelName: 'TechGamer',
     channelAvatar: 'https://i.pravatar.cc/40?img=8',

@@ -1,15 +1,16 @@
 import React from 'react';
 import styles from './VideoCard.module.css';
 
-const VideoCard = ({ video }) => {
 const VideoCard = ({ video, compact = false, onClick }) => {
+  const handleClick = () => {
+    if (onClick) onClick(video);
+  };
+
   return (
-    <div className={`${styles.card} ${compact ? styles.compact : ''}`} onClick={() => onClick(video)}>
-    </div>
-  );
-};
-  return (
-    <div className={styles.card}>
+    <div
+      className={`${styles.card} ${compact ? styles.compact : ''}`}
+      onClick={handleClick}
+    >
       <div className={styles.thumbnail}>
         <img src={video.thumbnail} alt={video.title} />
         <span className={styles.duration}>{video.duration}</span>

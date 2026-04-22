@@ -15,8 +15,8 @@ const YouTubeSidebar = () => {
 
   return (
     <aside className={styles.sidebar}>
-      {menuItems.map((item, index) => (
-        <div key={index} className={styles.menuItem}>
+      {menuItems.map((item) => (
+        <div key={item.label} className={styles.menuItem}>
           <span className={styles.icon}>{item.icon}</span>
           <span className={styles.label}>{item.label}</span>
         </div>
