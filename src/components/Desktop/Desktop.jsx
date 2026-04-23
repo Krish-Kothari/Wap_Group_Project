@@ -59,6 +59,11 @@ const Desktop = ({ openWindow }) => {
           onClick={() => openWindow('calendar')}
         />
         <Icon
+          icon="📝"
+          name="Todo"
+          onClick={() => openWindow('todo')}
+        />
+        <Icon
           icon={<img src={github} alt="GitHub" style={{ width: '24px', height: '24px' }} />}
           label="GitHub Repo"
           onClick={() => window.open("https://github.com/Krish-Kothari/Wap_Group_Project", "_blank")}

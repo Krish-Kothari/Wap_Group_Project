@@ -7,7 +7,9 @@ import YouTubeApp from './components/YouTubeApp/YouTubeApp';
 import StonePaperScissor from './components/StonePaperScissor/StonePaperScissor';
 import Calculator from './components/Calculator/Calculator';
 import Calendar from './components/Calendar/Calendar';
+import Todo from './components/Todo/Todo';
 import styles from './App.module.css';
+
 
 function App() {
   const [startOpen, setStartOpen] = useState(false);
@@ -32,6 +34,8 @@ function App() {
         return <Calculator />;
       case 'calendar':
         return <Calendar />;
+      case 'todo':
+        return <Todo />;
       default:
         return null;
     }
@@ -48,7 +52,8 @@ function App() {
                activeWindow === 'youtube' ? 'YouTube' :
                activeWindow === 'sps' ? 'Stone Paper Scissor' :
                activeWindow === 'calculator' ? 'Calculator' :
-               activeWindow === 'calendar' ? 'Calendar' : ''} 
+               activeWindow === 'calendar' ? 'Calendar' :
+               activeWindow === 'todo' ? 'Todo' : ''} 
           fullscreen={activeWindow === 'youtube' || activeWindow === 'sps' || activeWindow === 'calculator'}
           onClose={closeWindow}
         >

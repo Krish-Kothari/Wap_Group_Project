@@ -13,6 +13,7 @@ const pinnedApps = [
   { label: 'YouTube', image: ytIcon },
   { label: '🎮 Games' },
   { label: '🧮 Calculator' },
+  { label: '📝 Todo' },
 ];
 
 const recommendedItems = ['📄 Document.docx', '🖼️ Picture.png', '📁 Project folder'];

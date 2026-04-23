@@ -1,11 +1,13 @@
 import React from 'react';
 import styles from './Icon.module.css';
 
-const Icon = ({ icon, label, onClick, href }) => {
+const Icon = ({ icon, label, name, onClick, href }) => {
+  const iconLabel = label || name;
+
   const content = (
     <>
       <div className={styles.iconImage}>{icon}</div>
-      <span className={styles.iconLabel}>{label}</span>
+      <span className={styles.iconLabel}>{iconLabel}</span>
     </>
   );
 
