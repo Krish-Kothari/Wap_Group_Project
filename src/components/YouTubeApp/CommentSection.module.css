@@ -7,6 +7,35 @@
   margin-bottom: 16px;
 }
 
+.inputRow {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.inputRow input {
+  flex: 1;
+  background: #1f1f1f;
+  border: 1px solid #343434;
+  border-radius: 999px;
+  padding: 10px 14px;
+  color: #fff;
+}
+
+.inputRow button {
+  background: #3ea6ff;
+  color: #111;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.inputRow button:hover {
+  filter: brightness(1.06);
+}
+
 .comment {
   display: flex;
   gap: 16px;

@@ -5,6 +5,9 @@ const VideoPlayer = ({ video }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [reloadCount, setReloadCount] = useState(0);
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [reaction, setReaction] = useState(null);
+  const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
     if (!video) return undefined;
@@ -27,6 +30,10 @@ const VideoPlayer = ({ video }) => {
     setIsLoading(true);
     setHasError(false);
     setReloadCount((prev) => prev + 1);
+  };
+
+  const toggleReaction = (type) => {
+    setReaction((prev) => (prev === type ? null : type));
   };
 
   return (
@@ -66,13 +73,33 @@ const VideoPlayer = ({ video }) => {
             <p className={styles.channelName}>{video.channelName}</p>
             <p className={styles.subscriberCount}>{video.subscriberCount || '1M subscribers'}</p>
           </div>
-          <button className={styles.subscribeBtn}>Subscribe</button>
+          <button
+            className={`${styles.subscribeBtn} ${isSubscribed ? styles.subscribed : ''}`}
+            onClick={() => setIsSubscribed((prev) => !prev)}
+          >
+            {isSubscribed ? 'Subscribed' : 'Subscribe'}
+          </button>
         </div>
         <div className={styles.videoActions}>
-          <button>👍 {video.likeCount || '12K'}</button>
-          <button>👎</button>
+          <button
+            className={reaction === 'like' ? styles.activeAction : ''}
+            onClick={() => toggleReaction('like')}
+          >
+            👍 {video.likeCount || '12K'}
+          </button>
+          <button
+            className={reaction === 'dislike' ? styles.activeAction : ''}
+            onClick={() => toggleReaction('dislike')}
+          >
+            👎
+          </button>
           <button>↗️ Share</button>
-          <button>💾 Save</button>
+          <button
+            className={isSaved ? styles.activeAction : ''}
+            onClick={() => setIsSaved((prev) => !prev)}
+          >
+            💾 {isSaved ? 'Saved' : 'Save'}
+          </button>
         </div>
         <div className={styles.description}>
           <p>{video.views} • {video.timestamp}</p>
