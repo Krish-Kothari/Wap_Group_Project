@@ -1,0 +1,73 @@
+.container {
+  position: relative;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  font-size: 18px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: inherit;
+}
+
+.iconButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.popup {
+  position: absolute;
+  bottom: 40px;
+  right: 0;
+  width: 220px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 100;
+}
+
+.popupHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.sliderRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.muteBtn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.slider {
+  flex: 1;
+  height: 4px;
+  cursor: pointer;
+}
+
+.value {
+  font-size: 13px;
+  min-width: 36px;
+  text-align: right;
+}

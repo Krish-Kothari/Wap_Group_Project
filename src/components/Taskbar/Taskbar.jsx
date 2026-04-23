@@ -5,6 +5,7 @@ import homeIcon from '../../assets/home.png';
 import edgeIcon from '../../assets/edge.png';
 import explorerIcon from '../../assets/explorer.png';
 import settingsIcon from '../../assets/settings.png';
+import VolumeControl from '../VolumeControl/VolumeControl';
 
 const Taskbar = ({ toggleStart }) => {
   const now = new Date();
@@ -36,6 +37,9 @@ const Taskbar = ({ toggleStart }) => {
       </div>
       
       <div className={styles.systemTray}>
+        <div className={styles.trayControls}>
+          <VolumeControl />
+        </div>
         <span>{formattedDateTime}</span>
       </div>
     </div>
