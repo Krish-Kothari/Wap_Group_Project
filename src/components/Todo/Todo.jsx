@@ -1,9 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Todo.module.css";
 
 export default function Todo() {
   const [task, setTask] = useState("");
   const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("todos"));
+    if (saved) setTodos(saved);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const addTask = () => {
     if (task.trim() === "") return;
