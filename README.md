@@ -21,10 +21,17 @@ The following work has been completed so far:
 7. Development scripts are configured (dev, build, lint, preview).
 8. YouTube app UI is connected with home and watch views.
 9. Stone Paper Scissor and Calculator apps are available in the window system.
+10. Todo app with task management and localStorage persistence is implemented.
 
 ---
 
 ## Development Timeline
+
+### Apr 23, 2026
+
+* Added Todo app with task management
+* Tasks are saved to localStorage
+* Implemented add and delete functionality
 
 ### Apr 22, 2026
 
@@ -92,8 +99,9 @@ The following work has been completed so far:
 2. Start menu includes pinned apps, recommended items, and a search box UI.
 3. Taskbar clock updates from the system date and time.
 4. YouTube app can switch between the home grid and a video watch view.
-5. This PC and Microsoft Edge views are still placeholder content and need feature implementation.
-6. The UI works well on desktop, but responsiveness still needs improvement.
+5. Todo app allows users to add, delete, and persist tasks using localStorage.
+6. This PC and Microsoft Edge views are still placeholder content and need feature implementation.
+7. The UI works well on desktop, but responsiveness still needs improvement.
 
 ---
 
