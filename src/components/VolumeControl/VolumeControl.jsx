@@ -5,6 +5,7 @@ const VolumeControl = () => {
   const [volume, setVolume] = useState(50);
   const [previousVolume, setPreviousVolume] = useState(50);
   const [isMuted, setIsMuted] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
 
   const handleVolumeChange = (e) => {
     const newVol = parseInt(e.target.value, 10);
@@ -36,7 +37,11 @@ const VolumeControl = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
       <button
         className={styles.iconButton}
         onClick={toggleMute}
@@ -44,15 +49,22 @@ const VolumeControl = () => {
       >
         {getIcon()}
       </button>
-      <input
-        type="range"
-        min="0"
-        max="100"
-        value={isMuted ? 0 : volume}
-        onChange={handleVolumeChange}
-        className={styles.slider}
-      />
-      <span className={styles.value}>{isMuted ? '0' : volume}%</span>
+
+      {isHovering && (
+        <>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={isMuted ? 0 : volume}
+            onChange={handleVolumeChange}
+            className={styles.slider}
+          />
+          <span className={styles.value}>
+            {isMuted ? 'Muted' : `${volume}%`}
+          </span>
+        </>
+      )}
     </div>
   );
 };
