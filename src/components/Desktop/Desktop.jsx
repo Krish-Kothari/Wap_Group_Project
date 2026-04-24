@@ -60,6 +60,10 @@ const Desktop = ({ openWindow }) => {
           onClick={() => openWindow('calendar')}
         />
         <Icon
+          name="Chrome"
+          icon="/assets/chrome.png"
+        />
+        <Icon
           icon="📝"
           name="Todo"
           onClick={() => openWindow('todo')}
