@@ -61,7 +61,7 @@ const Desktop = ({ openWindow }) => {
         />
         <Icon
           name="Chrome"
-          icon="/assets/chrome.png"
+          icon={<img src="/assets/chrome.png" alt="Chrome" style={{ width: '30px', height: '30px' }} />}
         />
         <Icon
           icon="📝"
