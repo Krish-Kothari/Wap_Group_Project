@@ -61,7 +61,8 @@ const Desktop = ({ openWindow }) => {
         />
         <Icon
           name="Chrome"
-          icon={<img src="/assets/chrome.svg" alt="Chrome" style={{ width: '30px', height: '30px' }} />}
+          icon="/assets/chrome.svg"
+          onClick={() => window.open('https://www.google.com', '_blank')}
         />
         <Icon
           icon="📝"

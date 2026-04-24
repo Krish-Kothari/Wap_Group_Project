@@ -3,10 +3,15 @@ import styles from './Icon.module.css';
 
 const Icon = ({ icon, label, name, onClick, href }) => {
   const iconLabel = label || name;
+  const iconNode = typeof icon === 'string' ? (
+    <img src={icon} alt={iconLabel} />
+  ) : (
+    icon
+  );
 
   const content = (
     <>
-      <div className={styles.iconImage}>{icon}</div>
+      <div className={styles.iconImage}>{iconNode}</div>
       <span className={styles.iconLabel}>{iconLabel}</span>
     </>
   );
