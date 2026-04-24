@@ -3,11 +3,11 @@ import styles from './Icon.module.css';
 
 const Icon = ({ icon, label, name, onClick, href }) => {
   const iconLabel = label || name;
-  const iconNode = typeof icon === 'string' ? (
-    <img src={icon} alt={iconLabel} />
-  ) : (
-    icon
-  );
+  const isImageSource =
+    typeof icon === 'string' &&
+    (/^https?:\/\//i.test(icon) || /^\/.*\.(png|jpe?g|gif|svg|webp)$/i.test(icon));
+
+  const iconNode = isImageSource ? <img src={icon} alt={iconLabel} /> : icon;
 
   const content = (
     <>
