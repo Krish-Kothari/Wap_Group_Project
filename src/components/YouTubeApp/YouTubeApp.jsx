@@ -14,6 +14,8 @@ const YouTubeApp = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('default');
   const [showLiveOnly, setShowLiveOnly] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const [isAutoplayEnabled, setIsAutoplayEnabled] = useState(true);
   const [watchHistory, setWatchHistory] = useState([]);
   const [videos] = useState(mockVideos);
   const [commentsByVideo, setCommentsByVideo] = useState(() => {
@@ -40,7 +42,9 @@ const YouTubeApp = () => {
     return number;
   };
 
-  const filteredVideos = videos
+  const sourceVideos = activeSection === 'history' ? watchHistory : videos;
+
+  const filteredVideos = sourceVideos
     .filter((video) => {
       const query = searchQuery.trim().toLowerCase();
       if (!query) return true;
@@ -51,7 +55,7 @@ const YouTubeApp = () => {
       );
     })
     .filter((video) => {
-      if (!showLiveOnly) return true;
+      if (!showLiveOnly && activeSection !== 'live') return true;
       return video.duration === 'LIVE';
     });
 
@@ -85,11 +89,18 @@ const YouTubeApp = () => {
   const handleBackToHome = () => {
     setCurrentView('home');
     setSelectedVideo(null);
+    setActiveSection('home');
   };
 
   const handleSearchChange = (value) => {
     setSearchQuery(value);
     setCurrentView('home');
+  };
+
+  const handleSearchSubmit = () => {
+    if (visibleVideos.length > 0) {
+      handleVideoClick(visibleVideos[0]);
+    }
   };
 
   const handleAddComment = (videoId, text) => {
@@ -116,15 +127,34 @@ const YouTubeApp = () => {
     setShowLiveOnly((prev) => !prev);
   };
 
+  const handleSectionChange = (section) => {
+    setActiveSection(section);
+    setCurrentView('home');
+
+    if (section === 'live') {
+      setShowLiveOnly(true);
+    }
+
+    if (section !== 'live') {
+      setShowLiveOnly(false);
+    }
+  };
+
+  const handlePlayNext = () => {
+    if (recommendedVideos.length === 0) return;
+    handleVideoClick(recommendedVideos[0]);
+  };
+
   return (
     <div className={styles.youtubeApp}>
       <YouTubeHeader
         onLogoClick={handleBackToHome}
         searchQuery={searchQuery}
         onSearchChange={handleSearchChange}
+        onSearchSubmit={handleSearchSubmit}
       />
       <div className={styles.mainContainer}>
-        <YouTubeSidebar />
+        <YouTubeSidebar activeSection={activeSection} onSectionChange={handleSectionChange} />
         {currentView === 'home' || !selectedVideo ? (
           <div className={styles.content}>
             <div className={styles.feedTools}>
@@ -140,6 +170,13 @@ const YouTubeApp = () => {
                 {showLiveOnly ? 'Showing: Live only' : 'Show Live only'}
               </button>
             </div>
+
+            {activeSection === 'history' && watchHistory.length === 0 && (
+              <div className={styles.emptyState}>
+                <h3>No watch history yet</h3>
+                <p>Play a few videos to build your history.</p>
+              </div>
+            )}
 
             {watchHistory.length > 0 && (
               <div className={styles.historySection}>
@@ -163,7 +200,7 @@ const YouTubeApp = () => {
 
             {visibleVideos.length > 0 ? (
               <VideoGrid videos={visibleVideos} onVideoClick={handleVideoClick} />
-            ) : (
+            ) : activeSection === 'history' && watchHistory.length === 0 ? null : (
               <div className={styles.emptyState}>
                 <h3>No videos found</h3>
                 <p>Try another search term.</p>
@@ -174,13 +211,21 @@ const YouTubeApp = () => {
           <div className={styles.watchContainer}>
             <div className={styles.watchMain}>
               <VideoPlayer key={selectedVideo?.id} video={selectedVideo} />
+              <div className={styles.nextControls}>
+                <button onClick={handlePlayNext} disabled={recommendedVideos.length === 0}>
+                  Play next recommended
+                </button>
+                <button onClick={() => setIsAutoplayEnabled((prev) => !prev)}>
+                  {isAutoplayEnabled ? 'Autoplay: On' : 'Autoplay: Off'}
+                </button>
+              </div>
               <CommentSection
                 comments={commentsByVideo[selectedVideo.id] || []}
                 onAddComment={(text) => handleAddComment(selectedVideo.id, text)}
               />
             </div>
             <RecommendedVideos
-              videos={recommendedVideos}
+              videos={isAutoplayEnabled ? recommendedVideos : recommendedVideos.slice(0, 5)}
               onVideoClick={handleVideoClick}
             />
           </div>

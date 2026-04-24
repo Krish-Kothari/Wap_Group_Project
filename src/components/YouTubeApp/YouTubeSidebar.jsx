@@ -2,24 +2,25 @@ import React from 'react';
 import styles from './YouTubeSidebar.module.css';
 import homeIcon from '../../assets/home.png';
 
-const YouTubeSidebar = () => {
+const YouTubeSidebar = ({ activeSection, onSectionChange }) => {
   const menuItems = [
-    { icon: <img src={homeIcon} alt="Home" className={styles.iconImage} />, label: 'Home' },
-    { icon: '📺', label: 'Shorts' },
-    { icon: '📋', label: 'Subscriptions' },
-    { icon: '📚', label: 'Library' },
-    { icon: '📜', label: 'History' },
-    { icon: '⏱️', label: 'Watch Later' },
-    { icon: '👍', label: 'Liked Videos' },
+    { id: 'home', icon: <img src={homeIcon} alt="Home" className={styles.iconImage} />, label: 'Home' },
+    { id: 'live', icon: '🔴', label: 'Live' },
+    { id: 'history', icon: '🕘', label: 'History' }
   ];
 
   return (
     <aside className={styles.sidebar}>
       {menuItems.map((item) => (
-        <div key={item.label} className={styles.menuItem}>
+        <button
+          key={item.id}
+          type="button"
+          className={`${styles.menuItem} ${activeSection === item.id ? styles.active : ''}`}
+          onClick={() => onSectionChange(item.id)}
+        >
           <span className={styles.icon}>{item.icon}</span>
           <span className={styles.label}>{item.label}</span>
-        </div>
+        </button>
       ))}
     </aside>
   );

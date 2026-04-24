@@ -7,9 +7,11 @@ const VideoCard = ({ video, compact = false, onClick }) => {
   };
 
   return (
-    <div
+    <button
+      type="button"
       className={`${styles.card} ${compact ? styles.compact : ''}`}
       onClick={handleClick}
+      aria-label={`Play ${video.title}`}
     >
       <div className={styles.thumbnail}>
         <img src={video.thumbnail} alt={video.title} />
@@ -23,7 +25,7 @@ const VideoCard = ({ video, compact = false, onClick }) => {
           <p className={styles.meta}>{video.views} • {video.timestamp}</p>
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 

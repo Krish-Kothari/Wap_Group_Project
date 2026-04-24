@@ -1,5 +1,17 @@
 .card {
   cursor: pointer;
+  background: transparent;
+  border: none;
+  color: inherit;
+  width: 100%;
+  text-align: left;
+  padding: 0;
+}
+
+.card:focus-visible {
+  outline: 2px solid #3ea6ff;
+  outline-offset: 4px;
+  border-radius: 12px;
 }
 
 .thumbnail {
