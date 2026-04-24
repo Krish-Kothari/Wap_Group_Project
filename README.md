@@ -8,7 +8,7 @@ This is a React + Vite desktop-style project built as a group assignment.
 2. Maske Shrungar
 3. Vijay Mate
 
-## Project Status (As of 19 April 2026)
+## Project Status (As of 24 April 2026)
 
 The following work has been completed so far:
 
@@ -21,77 +21,9 @@ The following work has been completed so far:
 7. Development scripts are configured (dev, build, lint, preview).
 8. YouTube app UI is connected with home and watch views.
 9. Stone Paper Scissor and Calculator apps are available in the window system.
-10. Todo app with task management and localStorage persistence is implemented.
-
----
-
-## Development Timeline
-
-### Apr 23, 2026
-
-* Added Todo app with task management
-* Tasks are saved to localStorage
-* Implemented add and delete functionality
-
-### Apr 22, 2026
-
-* Fixed desktop icon layout
-* Added calendar app to desktop
-* Updated YouTube functionalities
-
-### Apr 21, 2026
-
-* Updated icons
-
-### Apr 20, 2026
-
-* Added Notepad styles module
-* Updated Notepad component
-* Created Windows 11 style icons
-* Added GitHub repo icon
-
-### Apr 19, 2026
-
-* Added calculator
-* Added rock-paper-scissor
-* Added full-screen mode
-* Updated app views
-* Created comment section
-* Added recommended videos
-
-### Apr 18, 2026
-
-* Added VideoPlayer
-* Basic YouTube app completed
-
-### Apr 17, 2026
-
-* Created YouTube video grid and CSS
-* Added video card
-* Added YouTube sidebar
-
-### Apr 16, 2026
-
-* Completed YouTube header
-* Created YouTube base structure
-
-### Apr 15, 2026
-
-* Added reusable window component
-* Created static start menu
-* Added static taskbar with system tray
-
-### Apr 14, 2026
-
-* Fixed branch error
-* Added desktop icons (This PC, Recycle Bin, Edge)
-* Added wallpaper and basic UI
-
-### Apr 13, 2026
-
-* Initial setup
-
----
+10. Todo app with localStorage-based task persistence is integrated.
+11. YouTube app supports search, comments, watch history, and recommendation panels.
+12. YouTube API integration now supports RapidAPI key setup with sample-data fallback.
 
 ## Current Progress Notes
 
@@ -99,11 +31,8 @@ The following work has been completed so far:
 2. Start menu includes pinned apps, recommended items, and a search box UI.
 3. Taskbar clock updates from the system date and time.
 4. YouTube app can switch between the home grid and a video watch view.
-5. Todo app allows users to add, delete, and persist tasks using localStorage.
-6. This PC and Microsoft Edge views are still placeholder content and need feature implementation.
-7. The UI works well on desktop, but responsiveness still needs improvement.
-
----
+5. This PC and Microsoft Edge views are still placeholder content and need feature implementation.
+6. The UI works well on desktop, but responsiveness still needs improvement.
 
 ## Run the Project
 
@@ -112,7 +41,21 @@ npm install
 npm run dev
 ```
 
----
+## YouTube API Setup
+
+To load real YouTube videos in the YouTube app, create a `.env` file in the project root and add:
+
+```bash
+VITE_RAPID_API_KEY=your_rapidapi_key_here
+```
+
+Optional fallback:
+
+```bash
+VITE_YOUTUBE_API_KEY=your_google_youtube_data_api_key
+```
+
+If no valid key is present, the app falls back to sample videos.
 
 ## Next Planned Work
 
@@ -122,7 +65,6 @@ npm run dev
 4. Add more desktop/taskbar interactions and app shortcuts.
 5. Extend the calculator and game experiences with more features.
 
----
 
 ## Long Term Goal
 

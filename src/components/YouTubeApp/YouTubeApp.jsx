@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import YouTubeHeader from './YouTubeHeader';
 import YouTubeSidebar from './YouTubeSidebar';
 import VideoGrid from './VideoGrid';
@@ -6,9 +6,12 @@ import VideoPlayer from './VideoPlayer';
 import RecommendedVideos from './RecommendedVideos';
 import CommentSection from './CommentSection';
 import { mockVideos } from '../../utils/youtubeMockData';
+import { fetchTrendingVideos, fetchVideosBySearch } from '../../utils/youtubeApi';
 import styles from './YouTubeApp.module.css';
 
 const YouTubeApp = () => {
+  const RAPID_API_KEY = import.meta.env.VITE_RAPID_API_KEY;
+  const YOUTUBE_API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
   const [currentView, setCurrentView] = useState('home'); // 'home' or 'watch'
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -16,8 +19,11 @@ const YouTubeApp = () => {
   const [showLiveOnly, setShowLiveOnly] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [isAutoplayEnabled, setIsAutoplayEnabled] = useState(true);
+  const [isFetching, setIsFetching] = useState(false);
+  const [apiError, setApiError] = useState('');
+  const [usingFallback, setUsingFallback] = useState(!RAPID_API_KEY && !YOUTUBE_API_KEY);
   const [watchHistory, setWatchHistory] = useState([]);
-  const [videos] = useState(mockVideos);
+  const [videos, setVideos] = useState(mockVideos);
   const [commentsByVideo, setCommentsByVideo] = useState(() => {
     const initial = {};
     mockVideos.forEach((video) => {
@@ -25,6 +31,36 @@ const YouTubeApp = () => {
     });
     return initial;
   });
+
+  useEffect(() => {
+    const loadDefaultVideos = async () => {
+      if (!RAPID_API_KEY && !YOUTUBE_API_KEY) {
+        setUsingFallback(true);
+        setApiError('Using sample videos. Add VITE_RAPID_API_KEY (or VITE_YOUTUBE_API_KEY) to load real YouTube videos.');
+        return;
+      }
+
+      setIsFetching(true);
+      setApiError('');
+
+      try {
+        const trendingVideos = await fetchTrendingVideos({
+          rapidApiKey: RAPID_API_KEY,
+          youtubeApiKey: YOUTUBE_API_KEY
+        });
+        setVideos(trendingVideos);
+        setUsingFallback(false);
+      } catch (error) {
+        setVideos(mockVideos);
+        setUsingFallback(true);
+        setApiError(`Could not load YouTube videos: ${error.message}. Showing sample videos.`);
+      } finally {
+        setIsFetching(false);
+      }
+    };
+
+    loadDefaultVideos();
+  }, [RAPID_API_KEY, YOUTUBE_API_KEY]);
 
   const parseViews = (value) => {
     if (!value) return 0;
@@ -97,9 +133,48 @@ const YouTubeApp = () => {
     setCurrentView('home');
   };
 
-  const handleSearchSubmit = () => {
-    if (visibleVideos.length > 0) {
-      handleVideoClick(visibleVideos[0]);
+  const handleSearchSubmit = async () => {
+    const query = searchQuery.trim();
+
+    setCurrentView('home');
+    setActiveSection('home');
+    setShowLiveOnly(false);
+    setApiError('');
+
+    if (!RAPID_API_KEY && !YOUTUBE_API_KEY) {
+      setUsingFallback(true);
+      setApiError('Using sample videos. Add VITE_RAPID_API_KEY (or VITE_YOUTUBE_API_KEY) to search real YouTube videos.');
+      return;
+    }
+
+    if (!query) {
+      setIsFetching(true);
+      try {
+        const trendingVideos = await fetchTrendingVideos({
+          rapidApiKey: RAPID_API_KEY,
+          youtubeApiKey: YOUTUBE_API_KEY
+        });
+        setVideos(trendingVideos);
+      } catch (error) {
+        setApiError(`Could not load YouTube videos: ${error.message}`);
+      } finally {
+        setIsFetching(false);
+      }
+      return;
+    }
+
+    setIsFetching(true);
+    try {
+      const searchedVideos = await fetchVideosBySearch({
+        rapidApiKey: RAPID_API_KEY,
+        youtubeApiKey: YOUTUBE_API_KEY,
+        query
+      });
+      setVideos(searchedVideos);
+    } catch (error) {
+      setApiError(`Search failed: ${error.message}`);
+    } finally {
+      setIsFetching(false);
     }
   };
 
@@ -171,6 +246,14 @@ const YouTubeApp = () => {
               </button>
             </div>
 
+            {usingFallback && (
+              <div className={styles.notice}>Sample mode: API key not found or request failed.</div>
+            )}
+
+            {apiError && <div className={styles.notice}>{apiError}</div>}
+
+            {isFetching && <div className={styles.notice}>Loading videos...</div>}
+
             {activeSection === 'history' && watchHistory.length === 0 && (
               <div className={styles.emptyState}>
                 <h3>No watch history yet</h3>
@@ -198,10 +281,10 @@ const YouTubeApp = () => {
               </div>
             )}
 
-            {visibleVideos.length > 0 ? (
+            {!isFetching && visibleVideos.length > 0 ? (
               <VideoGrid videos={visibleVideos} onVideoClick={handleVideoClick} />
             ) : activeSection === 'history' && watchHistory.length === 0 ? null : (
-              <div className={styles.emptyState}>
+              !isFetching && <div className={styles.emptyState}>
                 <h3>No videos found</h3>
                 <p>Try another search term.</p>
               </div>
