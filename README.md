@@ -2,15 +2,19 @@
 
 This is a React + Vite desktop-style project built as a group assignment.
 
+The project also explores building a YouTube clone inside a Windows 11-style UI interface.
+
+Live demo: [wap-group-project-delta.vercel.app](https://wap-group-project-delta.vercel.app/)
+
 ## Team Members
 
 1. Krish Kothari
 2. Maske Shrungar
 3. Vijay Mate
 
-## Project Status (As of 24 April 2026)
+## Project Status
 
-The following work has been completed so far:
+The project is finished and deployed. The following work has been completed:
 
 1. React + Vite project setup is complete.
 2. Core desktop layout is in place with clickable app icons.
@@ -25,14 +29,14 @@ The following work has been completed so far:
 11. YouTube app supports search, comments, watch history, and recommendation panels.
 12. YouTube API integration now supports RapidAPI key setup with sample-data fallback.
 
-## Current Progress Notes
+## Highlights
 
 1. The desktop layout is visible and interactive.
 2. Start menu includes pinned apps, recommended items, and a search box UI.
 3. Taskbar clock updates from the system date and time.
 4. YouTube app can switch between the home grid and a video watch view.
-5. This PC and Microsoft Edge views are still placeholder content and need feature implementation.
-6. The UI works well on desktop, but responsiveness still needs improvement.
+5. Stone Paper Scissor, Calculator, and Todo apps are integrated into the window system.
+6. The UI includes desktop, taskbar, start menu, and window styling with CSS modules.
 
 ## Run the Project
 
@@ -57,16 +61,3 @@ VITE_YOUTUBE_API_KEY=your_google_youtube_data_api_key
 
 If no valid key is present, the app falls back to sample videos.
 
-## Next Planned Work
-
-1. Complete fuller YouTube app integration and polish the watch experience.
-2. Replace placeholder window content for This PC and Microsoft Edge with functional views.
-3. Improve responsiveness and polish the UI.
-4. Add more desktop/taskbar interactions and app shortcuts.
-5. Extend the calculator and game experiences with more features.
-
-
-## Long Term Goal
-
-1. Complete the YouTube clone experience.
-2. Add more functional desktop apps and interactive window content.
