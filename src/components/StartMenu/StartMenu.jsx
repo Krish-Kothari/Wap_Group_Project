@@ -7,19 +7,26 @@ import settingsIcon from '../../assets/settings.png';
 import ytIcon from '../../assets/ytIcon.png';
 
 const pinnedApps = [
-  { label: 'File Explorer', image: explorerIcon },
-  { label: 'Edge', image: edgeIcon },
-  { label: 'Settings', image: settingsIcon },
-  { label: 'YouTube', image: ytIcon },
-  { label: '🎮 Games' },
-  { label: '🧮 Calculator' },
-  { label: '📝 Todo' },
+  { label: 'File Explorer', image: explorerIcon, appKey: 'thispc' },
+  { label: 'Edge', image: edgeIcon, appKey: 'edge' },
+  { label: 'Settings', image: settingsIcon, appKey: 'settings' },
+  { label: 'YouTube', image: ytIcon, appKey: 'youtube' },
+  { label: '🎮 Games', appKey: 'sps' },
+  { label: '🧮 Calculator', appKey: 'calculator' },
+  { label: '📝 Todo', appKey: 'todo' },
 ];
 
 const recommendedItems = ['📄 Document.docx', '🖼️ Picture.png', '📁 Project folder'];
 
-const StartMenu = ({ closeStart }) => {
+const StartMenu = ({ closeStart, openWindow }) => {
   const menuRef = useRef();
+
+  const handleAppClick = (appKey) => {
+    if (appKey && typeof openWindow === 'function') {
+      openWindow(appKey);
+      closeStart();
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -56,10 +63,16 @@ const StartMenu = ({ closeStart }) => {
 
       <div className={styles.pinnedApps}>
         {pinnedApps.map((app) => (
-          <div key={app.label} className={styles.appTile}>
+          <button
+            key={app.label}
+            type="button"
+            className={styles.appTile}
+            onMouseDown={(e) => e.stopPropagation()}
+            onClick={() => handleAppClick(app.appKey)}
+          >
             {app.image ? <img src={app.image} alt={app.label} className={styles.appTileIcon} /> : null}
             <span>{app.label}</span>
-          </div>
+          </button>
         ))}
       </div>
       

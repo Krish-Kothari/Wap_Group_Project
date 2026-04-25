@@ -26,6 +26,8 @@ function App() {
         return <p>This PC content</p>;
       case 'edge':
         return <p>Microsoft Edge content</p>;
+      case 'settings':
+        return <p>Settings content</p>;
       case 'youtube':
         return <YouTubeApp />;
       case 'sps':
@@ -49,6 +51,7 @@ function App() {
         <Window 
           title={activeWindow === 'thispc' ? 'This PC' : 
                  activeWindow === 'edge' ? 'Microsoft Edge' : 
+               activeWindow === 'settings' ? 'Settings' :
                activeWindow === 'youtube' ? 'YouTube' :
                activeWindow === 'sps' ? 'Stone Paper Scissor' :
                activeWindow === 'calculator' ? 'Calculator' :
@@ -62,7 +65,7 @@ function App() {
       )}
 
       <Taskbar toggleStart={toggleStart} />
-      {startOpen && <StartMenu closeStart={closeStart} />}
+      {startOpen && <StartMenu closeStart={closeStart} openWindow={openWindow} />}
     </div>
   );
 }

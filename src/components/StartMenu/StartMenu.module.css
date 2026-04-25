@@ -125,6 +125,8 @@
 }
 
 .appTile {
+  appearance: none;
+  width: 100%;
   background: rgba(255, 255, 255, 0.84);
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 18px;
@@ -136,7 +138,8 @@
   text-align: center;
   gap: 8px;
   font-size: 13px;
-  cursor: default;
+  color: #111;
+  cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
   min-height: 76px;
 }
