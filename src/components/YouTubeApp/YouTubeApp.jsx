@@ -23,6 +23,22 @@ const YouTubeApp = () => {
   const [apiError, setApiError] = useState('');
   const [usingFallback, setUsingFallback] = useState(!RAPID_API_KEY && !YOUTUBE_API_KEY);
   const [watchHistory, setWatchHistory] = useState([]);
+  const [recentSearches, setRecentSearches] = useState(() => {
+    try {
+      const saved = localStorage.getItem('yt_recent_searches');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+  const [likedVideos, setLikedVideos] = useState(() => {
+    try {
+      const saved = localStorage.getItem('yt_liked_videos');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
   const [videos, setVideos] = useState(mockVideos);
   const [commentsByVideo, setCommentsByVideo] = useState(() => {
     const initial = {};
@@ -62,6 +78,14 @@ const YouTubeApp = () => {
     loadDefaultVideos();
   }, [RAPID_API_KEY, YOUTUBE_API_KEY]);
 
+  useEffect(() => {
+    localStorage.setItem('yt_recent_searches', JSON.stringify(recentSearches));
+  }, [recentSearches]);
+
+  useEffect(() => {
+    localStorage.setItem('yt_liked_videos', JSON.stringify(likedVideos));
+  }, [likedVideos]);
+
   const parseViews = (value) => {
     if (!value) return 0;
 
@@ -78,7 +102,12 @@ const YouTubeApp = () => {
     return number;
   };
 
-  const sourceVideos = activeSection === 'history' ? watchHistory : videos;
+  const sourceVideos =
+    activeSection === 'history'
+      ? watchHistory
+      : activeSection === 'liked'
+        ? likedVideos
+        : videos;
 
   const filteredVideos = sourceVideos
     .filter((video) => {
@@ -133,8 +162,8 @@ const YouTubeApp = () => {
     setCurrentView('home');
   };
 
-  const handleSearchSubmit = async () => {
-    const query = searchQuery.trim();
+  const handleSearchSubmit = async (customQuery) => {
+    const query = (customQuery ?? searchQuery).trim();
 
     setCurrentView('home');
     setActiveSection('home');
@@ -171,6 +200,7 @@ const YouTubeApp = () => {
         query
       });
       setVideos(searchedVideos);
+      setRecentSearches((prev) => [query, ...prev.filter((item) => item !== query)].slice(0, 6));
     } catch (error) {
       setApiError(`Search failed: ${error.message}`);
     } finally {
@@ -202,6 +232,13 @@ const YouTubeApp = () => {
     setShowLiveOnly((prev) => !prev);
   };
 
+  const handleClearFilters = () => {
+    setSortBy('default');
+    setShowLiveOnly(false);
+    setSearchQuery('');
+    setActiveSection('home');
+  };
+
   const handleSectionChange = (section) => {
     setActiveSection(section);
     setCurrentView('home');
@@ -215,10 +252,30 @@ const YouTubeApp = () => {
     }
   };
 
+  const handleRecentSearchPick = (query) => {
+    setSearchQuery(query);
+    handleSearchSubmit(query);
+  };
+
+  const handleToggleVideoLike = (video, shouldLike) => {
+    if (!video) return;
+
+    setLikedVideos((prev) => {
+      if (shouldLike) {
+        const withoutVideo = prev.filter((item) => item.id !== video.id);
+        return [video, ...withoutVideo].slice(0, 20);
+      }
+
+      return prev.filter((item) => item.id !== video.id);
+    });
+  };
+
   const handlePlayNext = () => {
     if (recommendedVideos.length === 0) return;
     handleVideoClick(recommendedVideos[0]);
   };
+
+  const isSelectedVideoLiked = likedVideos.some((video) => video.id === selectedVideo?.id);
 
   return (
     <div className={styles.youtubeApp}>
@@ -227,9 +284,16 @@ const YouTubeApp = () => {
         searchQuery={searchQuery}
         onSearchChange={handleSearchChange}
         onSearchSubmit={handleSearchSubmit}
+        recentSearches={recentSearches}
+        onRecentSearchPick={handleRecentSearchPick}
+        onClearRecentSearches={() => setRecentSearches([])}
       />
       <div className={styles.mainContainer}>
-        <YouTubeSidebar activeSection={activeSection} onSectionChange={handleSectionChange} />
+        <YouTubeSidebar
+          activeSection={activeSection}
+          onSectionChange={handleSectionChange}
+          likedCount={likedVideos.length}
+        />
         {currentView === 'home' || !selectedVideo ? (
           <div className={styles.content}>
             <div className={styles.feedTools}>
@@ -243,6 +307,9 @@ const YouTubeApp = () => {
               </div>
               <button className={styles.liveToggle} onClick={handleLiveToggle}>
                 {showLiveOnly ? 'Showing: Live only' : 'Show Live only'}
+              </button>
+              <button className={styles.clearFiltersBtn} onClick={handleClearFilters}>
+                Clear filters
               </button>
             </div>
 
@@ -258,6 +325,13 @@ const YouTubeApp = () => {
               <div className={styles.emptyState}>
                 <h3>No watch history yet</h3>
                 <p>Play a few videos to build your history.</p>
+              </div>
+            )}
+
+            {activeSection === 'liked' && likedVideos.length === 0 && (
+              <div className={styles.emptyState}>
+                <h3>No liked videos yet</h3>
+                <p>Use the thumbs up button on any video to save it here.</p>
               </div>
             )}
 
@@ -293,7 +367,12 @@ const YouTubeApp = () => {
         ) : (
           <div className={styles.watchContainer}>
             <div className={styles.watchMain}>
-              <VideoPlayer key={selectedVideo?.id} video={selectedVideo} />
+              <VideoPlayer
+                key={selectedVideo?.id}
+                video={selectedVideo}
+                isLiked={isSelectedVideoLiked}
+                onToggleLike={handleToggleVideoLike}
+              />
               <div className={styles.nextControls}>
                 <button onClick={handlePlayNext} disabled={recommendedVideos.length === 0}>
                   Play next recommended

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from './VideoPlayer.module.css';
 
-const VideoPlayer = ({ video }) => {
+const VideoPlayer = ({ video, isLiked, onToggleLike }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [reloadCount, setReloadCount] = useState(0);
   const [isSubscribed, setIsSubscribed] = useState(false);
-  const [reaction, setReaction] = useState(null);
+  const [reaction, setReaction] = useState(isLiked ? 'like' : null);
   const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
@@ -33,7 +33,19 @@ const VideoPlayer = ({ video }) => {
   };
 
   const toggleReaction = (type) => {
-    setReaction((prev) => (prev === type ? null : type));
+    setReaction((prev) => {
+      const next = prev === type ? null : type;
+
+      if (type === 'like' && onToggleLike) {
+        onToggleLike(video, next === 'like');
+      }
+
+      if (type === 'dislike' && onToggleLike && prev === 'like') {
+        onToggleLike(video, false);
+      }
+
+      return next;
+    });
   };
 
   return (
