@@ -17,8 +17,9 @@
 	min-height: 100%;
 	padding: 2rem 1rem 2.5rem;
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
+	overflow: auto;
 	font-family: "Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
 	color: var(--ink);
 	background:
@@ -36,6 +37,8 @@
 	width: min(960px, 100%);
 	position: relative;
 	overflow: hidden;
+	display: flex;
+	flex-direction: column;
 	border: 2px solid #1f2a3729;
 	border-radius: 26px;
 	background: var(--card);
@@ -215,6 +218,7 @@
 	margin-top: 1.2rem;
 	border-top: 1px dashed #1f2a3733;
 	padding-top: 0.95rem;
+	min-height: 0;
 }
 
 .historyWrap h2 {
@@ -233,6 +237,9 @@
 	list-style: none;
 	display: grid;
 	gap: 0.55rem;
+	max-height: 240px;
+	overflow-y: auto;
+	padding-right: 0.2rem;
 }
 
 .historyItem {

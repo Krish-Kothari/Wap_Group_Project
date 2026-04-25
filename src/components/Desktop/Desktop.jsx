@@ -33,7 +33,7 @@ const Desktop = ({ openWindow }) => {
         <Icon
           icon={<img src={edge} alt="Microsoft Edge" style={{width: '30px',height:'30px'}} />}
           label="Microsoft Edge"
-          onClick={() => window.open('_blank')}
+          onClick={() => window.open('https://www.microsoft.com/en-us/edge')}
         />
         {/* YouTube*/}
         <Icon

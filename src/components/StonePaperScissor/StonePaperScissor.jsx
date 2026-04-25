@@ -53,7 +53,7 @@ const StonePaperScissor = () => {
         result,
       },
       ...prevHistory,
-    ]);
+    ].slice(0, 25));
   }
   function resetGame() {
     setUserMove('');
